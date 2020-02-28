@@ -6,6 +6,7 @@
 #include "UObject/SoftObjectPtr.h"
 #include "PlayerEvents.generated.h"
 
+// Additional struct for FLookAtActor
 USTRUCT(BlueprintType)
 struct FLookAtActorSequence
 {
@@ -28,6 +29,28 @@ struct FLookAtActorSequence
 };
 
 
+// Additional struct for FDamagePlayer
+USTRUCT(BlueprintType)
+struct FOptionalDamageSound
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "Optional Damage Sound")
+		TAssetPtr<USoundBase> CustomDamageVoice;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Optional Damage Sound")
+		TAssetPtr<USoundBase> CustomDieVoice;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Optional Damage Sound")
+		TAssetPtr<USoundBase> CustomDieSFX;
+};
+
+
+	//
+	// Additional structs for FPlayerEvents
+	//
+
+
 USTRUCT(BlueprintType)
 struct FLookAtActors
 {
@@ -38,22 +61,6 @@ struct FLookAtActors
 
 	UPROPERTY(BlueprintReadWrite, Category = "Look At Actors")
 	float DelayBeforeLookingSequenceSec;
-};
-
-
-USTRUCT(BlueprintType)
-struct FOptionalDamageSound
-{
-	GENERATED_BODY()
-
-	UPROPERTY(BlueprintReadWrite, Category = "Optional Damage Sound")
-	TAssetPtr<USoundBase> CustomDamageVoice;
-
-	UPROPERTY(BlueprintReadWrite, Category = "Optional Damage Sound")
-	TAssetPtr<USoundBase> CustomDieVoice;
-
-	UPROPERTY(BlueprintReadWrite, Category = "Optional Damage Sound")
-	TAssetPtr<USoundBase> CustomDieSFX;
 };
 
 
@@ -120,6 +127,7 @@ struct FGlitchEffect
 };
 
 
+//Main struct
 USTRUCT(BlueprintType)
 struct FPlayerEvents
 {

@@ -24,6 +24,7 @@ struct FActorTransformSequence
 	float TransformDurationSec;
 };
 
+
 // Additional struct for FSpawnActors
 USTRUCT(BlueprintType)
 struct FSpawnActorsAttachment
@@ -142,7 +143,7 @@ struct FActorsAvailability
 };
 
 
-
+//Main struct
 USTRUCT(BlueprintType)
 struct FEnvironmentEvents
 {

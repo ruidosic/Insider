@@ -31,4 +31,8 @@ struct FGameEvents
 	//Game Event, wich execute if TriggerInteraction match with some gameplay event
 	UPROPERTY(BLueprintReadWrite, Category = "Game Events")
 	FGameEvent GameEvent;
+
+	// Time when Game Event was destroyed with all child actors
+	UPROPERTY(BLueprintReadWrite, Category = "Game Events")
+	float EventsLifetimeSec;
 };
