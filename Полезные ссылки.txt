@@ -1,8 +1,17 @@
 Асинхронная подгрузка
 https://www.youtube.com/watch?v=j6mskTgL7kU
 
+Асинхронная подгрузка С++
+https://wiki.unrealengine.com/TAssetPtr_and_Asynchronous_Asset_Loading
+
 Потоки UE4 С++
 https://www.youtube.com/watch?v=1lBadANnJaw&list=WL&index=2&t=0s
 
-UE4 Code Style
+Руководство по стилю проекта UE4
 https://github.com/CosmoMyzrailGorynych/ue4-style-guide-rus/blob/master/README.md#anc-ui
+
+Таймлайны С++
+https://wiki.unrealengine.com/Timeline_in_c%2B%2B
+
+Перечисления С++
+https://gist.github.com/trentpolack/ad361a4d3d6e46d1a1ff82c03a997f28
