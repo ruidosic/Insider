@@ -21,7 +21,7 @@ struct FGameEvents
 	int AfterTimes;
 
 	//
-	UPROPERTY(BlueprintReadWrite, Category = "Game Events")
+	UPROPERTY(Category = "Game Events")
 	int Counter;
 
 	//
