@@ -4,8 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Structures/GameEvents.h"
-#include "Enums/EventCheck.h"
+#include "Core/Structures/GameEvent.h"
 #include "CoreGameEvent.generated.h"
 
 class APlayerController;
@@ -19,10 +18,8 @@ public:
 
 	ACoreGameEvent();
 
-	// Enable or Disable Player's Input
-	void ControllerInput(bool bEnabled);
-
-	void GameEventCheck(TEnumAsByte<EEventCheck> CheckEvent);
+	UFUNCTION()
+	void CreateGameEvent(const FGameEvent& GameEvent);
 
 private:
 
@@ -32,12 +29,5 @@ protected:
 
 	virtual void BeginPlay() override;
 
-	UPROPERTY(VisibleAnywhere)
-	bool bInteractionEnabled;
 
-	UPROPERTY(VisibleAnywhere)
-	TArray<FGameEvents> GameEvents;
-
-	UPROPERTY(VisibleAnywhere)
-	TArray<int> IndexCache;
 };

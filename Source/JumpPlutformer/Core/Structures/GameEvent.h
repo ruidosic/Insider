@@ -2,12 +2,12 @@
 
 #pragma once
 
-#include "Structures/EnvironmentEvents.h"
-#include "Structures/PlayerEvents.h"
-#include "Structures/SoundEvents.h"
-#include "Structures/QuestEvents.h"
-#include "Structures/LevelEvents.h"
-#include "Structures/SubtitlesEvents.h"
+#include "Core/Structures/EnvironmentEvents.h"
+#include "Core/Structures/PlayerEvents.h"
+#include "Core/Structures/SoundEvents.h"
+#include "Core/Structures/QuestEvents.h"
+#include "Core/Structures/LevelEvents.h"
+#include "Core/Structures/SubtitlesEvents.h"
 #include "GameEvent.generated.h"
 
 /**

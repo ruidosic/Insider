@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "Core/CoreUse.h"
 #include "Core/Enums/EventInteractions.h"
 #include "UObject/SoftObjectPtr.h"
 #include "EnvironmentEvents.generated.h"
@@ -59,7 +58,7 @@ struct FActorInteraction
 	GENERATED_BODY()
 
 	UPROPERTY(BlueprintReadWrite, Category = "Actor Interaction")
-	TArray<ACoreUse*> ActorsToInteract;
+	TArray<class ACoreUse*> ActorsToInteract;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Actor Interaction")
 	TEnumAsByte<EEventInteractions> Interaction;
