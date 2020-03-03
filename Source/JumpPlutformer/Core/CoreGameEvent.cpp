@@ -170,5 +170,28 @@ void ACoreGameEvent::ActorInteractionLoop(FActorInteraction & ActorInteraction)
 }
 
 
+//	Actor Transforms
+void ACoreGameEvent::ActorTransforms(FGameEvent & GameEvent)
+{
+	if (GameEvent.Environment.ActorTransforms.IsValidIndex(0))
+	{
+		for (FActorTransforms& ActorTransform : GameEvent.Environment.ActorTransforms)
+		{
+			ACoreGameEvent* GE;
+			GE = GetWorld()->SpawnActor<ACoreGameEvent>(GetClass(), FVector::ZeroVector, FRotator::ZeroRotator);
+			if (GE)
+			{
+				CoreGameEventsCache.Add(GE);
+				GE->ActorTransform(ActorTransform);
+			}
+		}
+	}
+}
 
-//	
+void ACoreGameEvent::ActorTransform(FActorTransforms & ActorTransform)
+{
+	if (ActorTransform.ActorToTransform && ActorTransform.TransformSequence.IsValidIndex(0))
+	{
+
+	}
+}

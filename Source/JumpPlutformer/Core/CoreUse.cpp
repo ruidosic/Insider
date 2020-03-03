@@ -6,6 +6,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Core/CoreGameEvent.h"
 
+
 ACoreUse::ACoreUse()
 {
 	PrimaryActorTick.bCanEverTick = false;
@@ -27,6 +28,7 @@ void ACoreUse::ControllerInput(bool bEnabled)
 		}
 	}
 }
+
 
 void ACoreUse::GameEventCheck(TEnumAsByte<EEventCheck> CheckEvent)
 {
@@ -53,6 +55,7 @@ void ACoreUse::GameEventCheck(TEnumAsByte<EEventCheck> CheckEvent)
 		Index++;
 	}
 
+
 	//Loop for create game events by cached indexes
 	for (const int& i : IndexCache)
 	{
@@ -62,14 +65,6 @@ void ACoreUse::GameEventCheck(TEnumAsByte<EEventCheck> CheckEvent)
 
 		GE->CreateGameEvent(GameEvents[i].GameEvent);
 	}
-}
-
-
-
-void ACoreUse::BeginPlay()
-{
-	Super::BeginPlay();
-	
 }
 
 

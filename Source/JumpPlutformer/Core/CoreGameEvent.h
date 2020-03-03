@@ -41,4 +41,10 @@ private:
 	void ActorInteractions(FGameEvent& GameEvent);
 	void ActorInteraction(FActorInteraction& ActorInteraction);
 	void ActorInteractionLoop(FActorInteraction & ActorInteraction);
+
+
+	//Actor Transforms Events
+	void ActorTransforms(FGameEvent& GameEvent);
+	void ActorTransform(FActorTransforms& ActorTransform);
+	void ActorTransformLoop(FActorTransforms& ActorTransform);
 };

@@ -25,8 +25,6 @@ public:
 
 protected:
 
-	virtual void BeginPlay() override;
-
 	UPROPERTY(BlueprintReadOnly)
 	bool bInteractionEnabled;
 
