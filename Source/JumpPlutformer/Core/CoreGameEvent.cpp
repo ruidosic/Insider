@@ -16,6 +16,7 @@ void ACoreGameEvent::CreateGameEvent(const FGameEvent & GameEvent)
 {
 }
 
+
 void ACoreGameEvent::BeginPlay()
 {
 	Super::BeginPlay();
