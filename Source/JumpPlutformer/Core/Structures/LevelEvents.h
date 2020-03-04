@@ -14,16 +14,16 @@ struct FLevelOpen
 {
 	GENERATED_BODY()
 
-	UPROPERTY(BlueprintReadWrite, Category = "Open Level")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Open Level")
 	bool bOpenLevel;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Open Level")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Open Level")
 	bool bCarryInventory;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Open Level")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Open Level")
 	FName LevelName;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Open Level")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Open Level")
 	float DelayBeforeOpenLevelSec;
 };
 
@@ -33,16 +33,16 @@ struct FLoadStream
 {
 	GENERATED_BODY()
 
-	UPROPERTY(BlueprintReadWrite, Category = "Load Stream")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Load Stream")
 	FName LevelName;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Load Stream")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Load Stream")
 	bool bVisibleAfterLoad;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Load Stream")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Load Stream")
 	bool bShouldBlockAfterLoad;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Load Stream")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Load Stream")
 	float DelayBeforeLoadSec;
 };
 
@@ -51,10 +51,10 @@ struct FUnloadStream
 {
 	GENERATED_BODY()
 
-	UPROPERTY(BlueprintReadWrite, Category = "Unload Stream")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Unload Stream")
 	FName LevelName;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Unload Stream")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Unload Stream")
 	float DelayBeforeUnloadSec;
 };
 
@@ -65,12 +65,12 @@ struct FLevelEvents
 {
 	GENERATED_BODY()
 
-	UPROPERTY(BlueprintReadWrite, Category = "Level Events")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Level Events")
 	FLevelOpen OpenLevel;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Level Events")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Level Events")
 	TArray<FLoadStream> LoadStreamLevels;
 		
-	UPROPERTY(BlueprintReadWrite, Category = "Level Events")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Level Events")
 	TArray<FUnloadStream> UnloadStreamLevels;
 };

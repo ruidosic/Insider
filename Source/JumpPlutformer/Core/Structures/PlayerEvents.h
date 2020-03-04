@@ -12,19 +12,19 @@ struct FLookAtActorSequence
 {
 	GENERATED_BODY()
 
-	UPROPERTY(BlueprintReadWrite, Category = "Look At Actors Sequence")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Look At Actors Sequence")
 	AActor* ActorToLook;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Look At Actors Sequence")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Look At Actors Sequence")
 	bool bSmooth;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Look At Actors Sequence")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Look At Actors Sequence")
 	float TurnSpeedSec;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Look At Actors Sequence")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Look At Actors Sequence")
 	float KeepLookingDurationSec;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Look At Actors Sequence")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Look At Actors Sequence")
 	float TargetFOV;
 };
 
@@ -35,13 +35,13 @@ struct FOptionalDamageSound
 {
 	GENERATED_BODY()
 
-	UPROPERTY(BlueprintReadWrite, Category = "Optional Damage Sound")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Optional Damage Sound")
 		TAssetPtr<USoundBase> CustomDamageVoice;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Optional Damage Sound")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Optional Damage Sound")
 		TAssetPtr<USoundBase> CustomDieVoice;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Optional Damage Sound")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Optional Damage Sound")
 		TAssetPtr<USoundBase> CustomDieSFX;
 };
 
@@ -56,10 +56,10 @@ struct FLookAtActors
 {
 	GENERATED_BODY()
 
-	UPROPERTY(BlueprintReadWrite, Category = "Look At Actors")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Look At Actors")
 	TArray<FLookAtActorSequence> LookAtActorSeq;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Look At Actors")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Look At Actors")
 	float DelayBeforeLookingSequenceSec;
 };
 
@@ -69,31 +69,31 @@ struct FDamagePlayer
 {
 	GENERATED_BODY()
 
-	UPROPERTY(BlueprintReadWrite, Category = "Damage Player")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage Player")
 	float DamageValue;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Damage Player")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage Player")
 	bool bSurviveAfterThisDamage;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Damage Player")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage Player")
 	bool bDamageSound;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Damage Player")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage Player")
 	bool bDeathSoundVoice;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Damage Player")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage Player")
 	bool bDeathSoundSFX;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Damage Player")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage Player")
 	bool bHUDDamageAnimation;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Damage Player")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage Player")
 	bool bHealthAnimation;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Damage Player")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage Player")
 	FOptionalDamageSound CustomSounds;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Damage Player")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage Player")
 	float DelayBeforeDamageSec;
 };
 
@@ -103,16 +103,16 @@ struct FFearEffect
 {
 	GENERATED_BODY();
 
-	UPROPERTY(BlueprintReadWrite, Category = "Fear Effect")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fear Effect")
 	bool bFearAnimation;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Fear Effect")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fear Effect")
 	bool bFearSound;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Fear Effect")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fear Effect")
 	TAssetPtr<USoundBase> CustomFearSound;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Fear Effect")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fear Effect")
 	float DelayBeforeFear;
 };
 
@@ -122,7 +122,7 @@ struct FGlitchEffect
 {
 	GENERATED_BODY()
 
-	UPROPERTY(BlueprintReadWrite, Category = "Glitch Effect")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Glitch Effect")
 	float DelayBeforeGlitchSec;
 };
 
@@ -133,15 +133,15 @@ struct FPlayerEvents
 {
 	GENERATED_BODY()
 
-	UPROPERTY(BlueprintReadWrite, Category = "Player Events")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Events")
 	TArray<FLookAtActors> LookAtActors;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Player Events")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Events")
 	TArray<FDamagePlayer> DamagePlayer;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Player Events")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Events")
 	TArray<FFearEffect> FearEffect;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Player Events")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Events")
 	TArray<FGlitchEffect> GlitchEffect;
 };

@@ -131,4 +131,8 @@ void ACoreUse::TakePhoto(bool bGameEvent)
 {
 }
 
+void ACoreUse::Explode(bool bGameEvent)
+{
+}
+
 

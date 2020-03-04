@@ -17,10 +17,10 @@ struct FSound2D
 {
 	GENERATED_BODY()
 
-	UPROPERTY(BlueprintReadWrite, Category = "2D Sound")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "2D Sound")
 	TAssetPtr<USoundBase> Sound2D;
 
-	UPROPERTY(BlueprintReadWrite, Category = "2D Sound")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "2D Sound")
 	float DelayBeforePlaySec;
 };
 
@@ -30,23 +30,23 @@ struct FSound3D
 {
 	GENERATED_BODY()
 
-	UPROPERTY(BlueprintReadWrite, Category = "3D Sound")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "3D Sound")
 	TAssetPtr<USoundBase> Sound3D;
 
-	UPROPERTY(BlueprintReadWrite, Category = "3D Sound")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "3D Sound")
 	AActor* ActorToAttach;
 
 	//Attach to taged actor with skip selected
-	UPROPERTY(BlueprintReadWrite, Category = "3D Sound")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "3D Sound")
 	bool bAttachToTagedActor;
 
-	UPROPERTY(BlueprintReadWrite, Category = "3D Sound")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "3D Sound")
 	FName ActorTag;
 
-	UPROPERTY(BlueprintReadWrite, Category = "3D Sound")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "3D Sound")
 	TAssetPtr<USoundAttenuation> SoundAttenuation;
 
-	UPROPERTY(BlueprintReadWrite, Category = "3D Sound")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "3D Sound")
 	float DelayBeforePlaySec;
 };
 
@@ -56,17 +56,17 @@ struct FSoundAmbient
 {
 	GENERATED_BODY()
 
-	UPROPERTY(BlueprintReadWrite, Category = "Ambient Sound")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Ambient Sound")
 	TAssetPtr<USoundBase> AmbientSound;
 
-	UPROPERTY(BlueprintReadWrite, Category = "AmbientSound")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AmbientSound")
 	TArray<FName> AmbientSoundTags;
 
 	// 0 = instant 
-	UPROPERTY(BlueprintReadWrite, Category = "AmbientSound")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AmbientSound")
 	float FadeInDurationSec;
 
-	UPROPERTY(BlueprintReadWrite, Category = "AmbientSound")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AmbientSound")
 	float DelayBeforePlaySec;
 };
 
@@ -76,17 +76,17 @@ struct FStopSoundAmbient
 {
 	GENERATED_BODY()
 
-	UPROPERTY(BlueprintReadWrite, Category = "Stop Ambient Sound")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stop Ambient Sound")
 	TArray<FName> TagsAmbientSoundToStop;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Stop Ambient Sound")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stop Ambient Sound")
 	bool bSkipTagsAndStopAll;
 
 
-	UPROPERTY(BlueprintReadWrite, Category = "Stop Ambient Sound")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stop Ambient Sound")
 	float FadeOutDurationSec;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Stop Ambient Sound")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stop Ambient Sound")
 	float DelayBeforeStopSec;
 };
 
@@ -97,15 +97,15 @@ struct FSoundEvents
 {
 	GENERATED_BODY()
 
-	UPROPERTY(BlueprintReadWrite, Category = "Sound Events")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sound Events")
 	TArray<FSound2D> PlaySound2D;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Sound Events")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sound Events")
 	TArray<FSound3D> PlaySound3D;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Sound Events")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sound Events")
 	TArray<FSoundAmbient> PlayAmbientSound;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Sound Events")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sound Events")
 	TArray<FStopSoundAmbient> StopAmbientSound;
 };

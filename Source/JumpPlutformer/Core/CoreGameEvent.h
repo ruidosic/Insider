@@ -19,15 +19,26 @@ public:
 	ACoreGameEvent();
 
 	UFUNCTION()
-	void CreateGameEvent(const FGameEvent& GameEvent);
+	void CreateGameEvent(FGameEvent& GameEvent);
 
 private:
 
 
+	
+	// Cache all Spawned Game Events for cleaning
+	TArray<ACoreGameEvent*> CoreGameEventsCache;
 
-protected:
 
-	virtual void BeginPlay() override;
+	// Clean memory when event done
+	void DestroyCreatedEventsTimer(const FGameEvent& GameEvent);
+	
+	UFUNCTION()
+	void DestroyCreatedEvents();
 
 
+	// Actor Interactions Events
+	int InteractionRepeatCounter = 0;
+	void ActorInteractions(FGameEvent& GameEvent);
+	void ActorInteraction(FActorInteraction& ActorInteraction);
+	void ActorInteractionLoop(FActorInteraction & ActorInteraction);
 };

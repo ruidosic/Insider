@@ -20,6 +20,7 @@ public:
 	// Enable or Disable Player's Input
 	void ControllerInput(bool bEnabled);
 
+	UFUNCTION(BlueprintCallable)
 	void GameEventCheck(TEnumAsByte<EEventCheck> CheckEvent);
 
 protected:
@@ -70,4 +71,7 @@ public:
 	virtual void TakeKey(bool bGameEvent);
 	UFUNCTION()
 	virtual void TakePhoto(bool bGameEvent);
+
+	UFUNCTION()
+	virtual void Explode(bool bGameEvent);
 };

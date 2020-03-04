@@ -13,10 +13,10 @@ struct FUpdateQuest
 {
 	GENERATED_BODY()
 
-	UPROPERTY(BlueprintReadWrite, Category = "Update Quest")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Update Quest")
 	FText NewQuest;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Update Quest")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Update Quest")
 	float DelayBeforeUpdateSec;
 
 };
@@ -28,6 +28,6 @@ struct FQuestEvents
 {
 	GENERATED_BODY()
 
-	UPROPERTY(BlueprintReadWrite, Category = "Quest Events")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Quest Events")
 	TArray<FUpdateQuest> UpdateQuests;
 };

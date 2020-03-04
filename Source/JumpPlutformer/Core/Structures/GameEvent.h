@@ -18,21 +18,25 @@ struct FGameEvent
 {
 	GENERATED_BODY()
 
-	UPROPERTY(BlueprintReadWrite, Category = "Game Event")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game Event")
 	FEnvironmentEvents Environment;
 	
-	UPROPERTY(BlueprintReadWrite, Category = "Game Event")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game Event")
 	FPlayerEvents Player;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Game Event")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game Event")
 	FSoundEvents Sounds;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Game Event")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game Event")
 	FQuestEvents Quests;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Game Event")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game Event")
 	FLevelEvents Level;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Game Event")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game Event")
 	FSubtitlesEvents Subtitles;
+
+	// Time when Game Event was destroyed with all child actors
+	UPROPERTY(EditAnywhere, BLueprintReadWrite, Category = "Game Events")
+	float EventsLifetimeSec = 10;
 };

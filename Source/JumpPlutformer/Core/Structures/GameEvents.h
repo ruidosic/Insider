@@ -13,26 +13,23 @@ struct FGameEvents
 	GENERATED_BODY()
 
 	//Interaction Event for matching with some gameplay event, if it's true, then execute GameEvent
-	UPROPERTY(BlueprintReadWrite, Category = "Game Events")
-	TEnumAsByte<EEventCheck> TriggerInteraction;		
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game Events")
+	TEnumAsByte<EEventCheck> TriggerInteraction = EC_None;		
 
 	// 
-	UPROPERTY(BlueprintReadWrite, Category = "Game Events")
-	int AfterTimes;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game Events")
+	int AfterTimes = 0;
+
+	//it's variable need only for intermediate calculation
+
+	UPROPERTY()
+	int Counter = 0;
 
 	//
-	UPROPERTY(BlueprintReadWrite, Category = "Game Events")
-	int Counter;
-
-	//
-	UPROPERTY(BlueprintReadWrite, Category = "Game Events")
-	bool bDoOnce;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game Events")
+	bool bDoOnce = true;
 
 	//Game Event, wich execute if TriggerInteraction match with some gameplay event
-	UPROPERTY(BLueprintReadWrite, Category = "Game Events")
+	UPROPERTY(EditAnywhere, BLueprintReadWrite, Category = "Game Events")
 	FGameEvent GameEvent;
-
-	// Time when Game Event was destroyed with all child actors
-	UPROPERTY(BLueprintReadWrite, Category = "Game Events")
-	float EventsLifetimeSec;
 };
