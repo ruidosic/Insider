@@ -18,7 +18,7 @@ void ACoreGameEvent::CreateGameEvent(FGameEvent & GameEvent)
 {
 	DestroyCreatedEventsTimer(GameEvent);
 	ActorInteractions(GameEvent);
-	ActorTransforms(GameEvent);
+	//ActorTransforms(GameEvent);
 }
 
 
@@ -43,7 +43,7 @@ void ACoreGameEvent::DestroyCreatedEvents()
 
 
 // Actor Interactions
-void ACoreGameEvent::ActorInteractions(FGameEvent & GameEvent)
+void ACoreGameEvent::ActorInteractions(FGameEvent& GameEvent)
 {
 	if (GameEvent.Environment.ActorInteractions.IsValidIndex(0))
 	{
@@ -53,25 +53,22 @@ void ACoreGameEvent::ActorInteractions(FGameEvent & GameEvent)
 			GE = GetWorld()->SpawnActor<ACoreGameEvent>(GetClass(), FVector::ZeroVector, FRotator::ZeroRotator);
 			if (GE)
 			{
-				CoreGameEventsCache.Add(GE);
 				GE->ActorInteraction(ActorInteraction);
+				CoreGameEventsCache.Add(GE);
 			}
 		}
 	}
 }
 
-void ACoreGameEvent::ActorInteraction(FActorInteraction & ActorInteraction)
+void ACoreGameEvent::ActorInteraction(FActorInteraction& ActorInteraction)
 {
-	if (ActorInteraction.ActorsToInteract.IsValidIndex(0))
+	AI = ActorInteraction;
+	if (AI.ActorsToInteract.IsValidIndex(0) && AI.ActorsToInteract[0])
 	{
-		AI = ActorInteraction;
 		// Delay Before Interaction
-		FTimerDelegate TimerDel;
 		FTimerHandle TimerHandle;
-		TimerDel.BindUFunction(this, FName{ TEXT("ActorInteractionLoop") }, ActorInteraction);
-		GetWorldTimerManager().SetTimer(TimerHandle, TimerDel, ActorInteraction.DelayBeforeInteractionSec, false);
+		GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &ACoreGameEvent::ActorInteractionLoop, AI.DelayBeforeInteractionSec, false);
 	}
-
 }
 
 void ACoreGameEvent::ActorInteractionLoop()
@@ -167,10 +164,8 @@ void ACoreGameEvent::ActorInteractionLoop()
 		InteractionRepeatCounter++;
 
 		// Delay before Each Repeat
-		FTimerDelegate TimerDel;
 		FTimerHandle TimerHandle;
-		TimerDel.BindUFunction(this, FName{ TEXT("ActorInteractionLoop") });
-		GetWorldTimerManager().SetTimer(TimerHandle, TimerDel, AI.DelayBeforeEachRepeatSec, false);
+		GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &ACoreGameEvent::ActorInteractionLoop, AI.DelayBeforeEachRepeatSec, false);
 	}
 }
 
@@ -198,10 +193,8 @@ void ACoreGameEvent::ActorTransform(FActorTransforms & ActorTransform)
 	if (ActorTransform.ActorToTransform && ActorTransform.TransformSequence.IsValidIndex(0))
 	{
 		AT = ActorTransform;
-		FTimerDelegate TimerDel;
 		FTimerHandle TimerHandle;
-		TimerDel.BindUFunction(this, FName{ TEXT("ActorTransformLoop") });
-		GetWorldTimerManager().SetTimer(TimerHandle, TimerDel, ActorTransform.DelayBeforeTransformSequenceSec, false);
+		GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &ACoreGameEvent::ActorTransformLoop, AT.DelayBeforeTransformSequenceSec, false);
 	}
 }
 

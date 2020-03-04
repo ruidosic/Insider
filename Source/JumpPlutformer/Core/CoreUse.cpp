@@ -72,6 +72,7 @@ void ACoreUse::GameEventCheck(TEnumAsByte<EEventCheck> CheckEvent)
 
 void ACoreUse::Use(bool bGameEvent)
 {
+	UE_LOG(LogTemp, Warning, TEXT("Use Event"));
 }
 
 void ACoreUse::AlternativeUse(bool bGameEvent)

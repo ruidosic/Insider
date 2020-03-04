@@ -41,6 +41,7 @@ private:
 	FActorInteraction AI;
 	void ActorInteractions(FGameEvent& GameEvent);
 	void ActorInteraction(FActorInteraction& ActorInteraction);
+	UFUNCTION()
 	void ActorInteractionLoop();
 
 
@@ -50,6 +51,7 @@ private:
 	FActorTransforms AT;
 	void ActorTransforms(FGameEvent& GameEvent);
 	void ActorTransform(FActorTransforms& ActorTransform);
+	UFUNCTION()
 	void ActorTransformLoop();
 
 
