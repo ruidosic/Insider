@@ -8,6 +8,8 @@
 #include "CoreGameEvent.generated.h"
 
 class APlayerController;
+class UTimelineComponent;
+class UCurveFloat;
 
 UCLASS()
 class INSIDER_API ACoreGameEvent : public AActor
@@ -23,8 +25,6 @@ public:
 
 private:
 
-
-	
 	// Cache all Spawned Game Events for cleaning
 	TArray<ACoreGameEvent*> CoreGameEventsCache;
 
@@ -38,13 +38,38 @@ private:
 
 	// Actor Interactions Events
 	int InteractionRepeatCounter = 0;
+	FActorInteraction AI;
 	void ActorInteractions(FGameEvent& GameEvent);
 	void ActorInteraction(FActorInteraction& ActorInteraction);
-	void ActorInteractionLoop(FActorInteraction & ActorInteraction);
+	void ActorInteractionLoop();
 
 
-	//Actor Transforms Events
+	//	Actor Transforms Events
+	int TransformSequenceCounter = 0;
+	FTransform ActorCurrentTransform;
+	FActorTransforms AT;
 	void ActorTransforms(FGameEvent& GameEvent);
 	void ActorTransform(FActorTransforms& ActorTransform);
-	void ActorTransformLoop(FActorTransforms& ActorTransform);
+	void ActorTransformLoop();
+
+
+
+protected:
+
+	// Timelines properties
+	UPROPERTY()
+	UTimelineComponent* ActorTransformTimeline;
+
+	UPROPERTY(EditDefaultsOnly)
+	UCurveFloat* DefaultLinearFloatCurve;
+
+	UPROPERTY(EditDefaultsOnly)
+	UCurveFloat* DefaultSmoothFloatCurve;
+
+	// Timelines Callbacks
+	UFUNCTION()
+	void OnActorTransformFloatReturn(float Value);
+
+	UFUNCTION()
+	void OnActorTransformFinished();
 };

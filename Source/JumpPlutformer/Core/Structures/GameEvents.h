@@ -18,7 +18,7 @@ struct FGameEvents
 
 	// 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game Events")
-	int AfterTimes = 0;
+	int AfterTimes = 1;
 
 	//it's variable need only for intermediate calculation
 
