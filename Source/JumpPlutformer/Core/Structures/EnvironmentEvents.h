@@ -7,6 +7,7 @@
 #include "EnvironmentEvents.generated.h"
 
 
+
 // Additional struct for FActorTransforms
 USTRUCT(BlueprintType)
 struct FActorTransformSequence
@@ -37,6 +38,9 @@ struct FSpawnActorsAttachment
 	FName ParentComponentByTag;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawn Actors Attachment")
+	FName SocketName;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawn Actors Attachment")
 	EAttachmentRule LocationRule;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawn Actors Attachment")
@@ -64,13 +68,13 @@ struct FActorInteraction
 	TEnumAsByte<EEventInteractions> Interaction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Actor Interaction")
-	int RepeatTimes;
+	int RepeatTimes = 1;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Actor Interaction")
-	float DelayBeforeInteractionSec;
+	float DelayBeforeInteractionSec = 0.01;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Actor Interaction")
-	float DelayBeforeEachRepeatSec;
+	float DelayBeforeEachRepeatSec = 0.01;
 };
 
 
@@ -86,7 +90,7 @@ struct FActorTransforms
 	TArray<FActorTransformSequence> TransformSequence;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Actor Transforms")
-	float DelayBeforeTransformSequenceSec;
+	float DelayBeforeTransformSequenceSec = 0.01;
 };
 
 
@@ -96,7 +100,7 @@ struct FSpawnActors
 	GENERATED_BODY()
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawn Actors")
-	TAssetSubclassOf<AActor> SpawnedActorClass;
+	TSubclassOf<AActor> SpawnedActorClass;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawn Actors")
 	FTransform SpawnTransform;
@@ -111,7 +115,7 @@ struct FSpawnActors
 	FSpawnActorsAttachment OptionalAttachTo;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawn Actors")
-	float DelayBeforeSpawnActorSec;
+	float DelayBeforeSpawnActorSec = 0.01;
 	
 };
 
@@ -137,7 +141,7 @@ struct FActorsAvailability
 	bool bSkipAllSettingsAndDestroy;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Actors Availability Events")
-	float DelayBeforeChange;
+	float DelayBeforeChange = 0.01;
 
 };
 
@@ -158,5 +162,5 @@ struct FEnvironmentEvents
 	TArray<FSpawnActors> SpawnActors;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Environment Events")
-	TArray<FActorsAvailability> AvailabilityActors;
+	TArray<FActorsAvailability> ActorAvailabilities;
 };

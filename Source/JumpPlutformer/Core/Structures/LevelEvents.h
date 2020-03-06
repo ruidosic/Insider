@@ -24,7 +24,7 @@ struct FLevelOpen
 	FName LevelName;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Open Level")
-	float DelayBeforeOpenLevelSec;
+	float DelayBeforeOpenLevelSec = 0.01;
 };
 
 
@@ -43,7 +43,7 @@ struct FLoadStream
 	bool bShouldBlockAfterLoad;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Load Stream")
-	float DelayBeforeLoadSec;
+	float DelayBeforeLoadSec = 0.01;
 };
 
 USTRUCT(BlueprintType)
@@ -55,7 +55,7 @@ struct FUnloadStream
 	FName LevelName;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Unload Stream")
-	float DelayBeforeUnloadSec;
+	float DelayBeforeUnloadSec = 0.01;
 };
 
 

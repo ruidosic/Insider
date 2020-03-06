@@ -8,6 +8,7 @@
 #include "CoreMainCharacter.generated.h"
 
 class ACorePlayerController;
+class UInputComponent;
 
 UCLASS()
 class INSIDER_API ACoreMainCharacter : public ACharacter, public ICharacterMovementInterface
@@ -29,7 +30,7 @@ public:
 
 	virtual void RotationAfterTeleport_Implementation(AActor* CurrentPortal, AActor* TargetPortal) override;
 	
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 
 	virtual void Tick(float DeltaTime) override;
 

@@ -48,7 +48,7 @@ struct FSubtitle
 
 	// + or - (sec)
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subtitle")
-	float ModifyDuration;
+	float ModifyDuration = 0.01;
 };
 
 
@@ -61,7 +61,7 @@ struct FSubtitleSequence
 	TArray<FSubtitle> AddSubtitle;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subtitle Sequence")
-	float DelayBeforeStartSequenceSec;
+	float DelayBeforeStartSequenceSec = 0.01;
 };
 
 

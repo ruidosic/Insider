@@ -19,10 +19,10 @@ struct FLookAtActorSequence
 	bool bSmooth;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Look At Actors Sequence")
-	float TurnSpeedSec;
+	float TurnSpeedSec = 0.01;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Look At Actors Sequence")
-	float KeepLookingDurationSec;
+	float KeepLookingDurationSec = 0.01;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Look At Actors Sequence")
 	float TargetFOV;
@@ -60,7 +60,7 @@ struct FLookAtActors
 	TArray<FLookAtActorSequence> LookAtActorSeq;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Look At Actors")
-	float DelayBeforeLookingSequenceSec;
+	float DelayBeforeLookingSequenceSec = 0.01;
 };
 
 
@@ -94,7 +94,7 @@ struct FDamagePlayer
 	FOptionalDamageSound CustomSounds;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage Player")
-	float DelayBeforeDamageSec;
+	float DelayBeforeDamageSec = 0.01;
 };
 
 
@@ -113,7 +113,7 @@ struct FFearEffect
 	TAssetPtr<USoundBase> CustomFearSound;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fear Effect")
-	float DelayBeforeFear;
+	float DelayBeforeFear = 0.01;
 };
 
 
@@ -123,7 +123,7 @@ struct FGlitchEffect
 	GENERATED_BODY()
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Glitch Effect")
-	float DelayBeforeGlitchSec;
+	float DelayBeforeGlitchSec = 0.01;
 };
 
 

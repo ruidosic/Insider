@@ -21,7 +21,7 @@ struct FSound2D
 	TAssetPtr<USoundBase> Sound2D;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "2D Sound")
-	float DelayBeforePlaySec;
+	float DelayBeforePlaySec = 0.01;
 };
 
 
@@ -47,7 +47,7 @@ struct FSound3D
 	TAssetPtr<USoundAttenuation> SoundAttenuation;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "3D Sound")
-	float DelayBeforePlaySec;
+	float DelayBeforePlaySec = 0.01;
 };
 
 
@@ -67,7 +67,7 @@ struct FSoundAmbient
 	float FadeInDurationSec;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AmbientSound")
-	float DelayBeforePlaySec;
+	float DelayBeforePlaySec = 0.01;
 };
 
 
@@ -87,7 +87,7 @@ struct FStopSoundAmbient
 	float FadeOutDurationSec;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stop Ambient Sound")
-	float DelayBeforeStopSec;
+	float DelayBeforeStopSec = 0.01;
 };
 
 

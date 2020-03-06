@@ -55,10 +55,27 @@ private:
 	void ActorTransformLoop();
 
 
+	// Spawn Actors Events
+	FSpawnActors SA;
+	void SpawnActors(FGameEvent& GameEvent);
+	void SpawnActor(FSpawnActors& SpawnActor);
+	UFUNCTION()
+	void SpawnActorAfterDelay();
+
+
+	// Availability Actors Events
+	FActorsAvailability AA;
+	void ActorAvailabilities(FGameEvent& GameEvent);
+	void ActorAvailability(FActorsAvailability& ActorAvailability);
+	UFUNCTION()
+	void ActorAvailabilityAfterDelay();
 
 protected:
 
+	//
 	// Timelines properties
+	//
+
 	UPROPERTY()
 	UTimelineComponent* ActorTransformTimeline;
 

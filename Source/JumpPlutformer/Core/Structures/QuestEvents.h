@@ -17,7 +17,7 @@ struct FUpdateQuest
 	FText NewQuest;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Update Quest")
-	float DelayBeforeUpdateSec;
+	float DelayBeforeUpdateSec = 0.01;
 
 };
 
