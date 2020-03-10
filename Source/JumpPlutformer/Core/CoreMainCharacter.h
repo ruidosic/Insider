@@ -28,6 +28,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	ACorePlayerController* PC;
 
+
 	virtual void RotationAfterTeleport_Implementation(AActor* CurrentPortal, AActor* TargetPortal) override;
 	
 	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
