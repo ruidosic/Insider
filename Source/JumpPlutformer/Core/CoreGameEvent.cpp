@@ -61,6 +61,9 @@ void ACoreGameEvent::DestroyCreatedEvents()
 }
 
 
+		/*  Environment Events   */
+
+
 // Actor Interactions
 void ACoreGameEvent::ActorInteractions(FGameEvent& GameEvent)
 {
@@ -341,7 +344,6 @@ void ACoreGameEvent::SpawnActorAfterDelay()
 			}
 		}
 	}
-		
 }
 
 
@@ -425,4 +427,46 @@ void ACoreGameEvent::ActorAvailabilityAfterDelay()
 		}
 	}
 }
-	
+
+
+			/*  Player Events   */
+
+
+//
+void ACoreGameEvent::LookAtActors(FGameEvent & GameEvent)
+{
+	if (GameEvent.Player.LookAtActors.IsValidIndex(0))
+	{
+		for (FLookAtActors& LookAtActor : GameEvent.Player.LookAtActors)
+		{
+			ACoreGameEvent* GE;
+			GE = GetWorld()->SpawnActor<ACoreGameEvent>(GetClass(), FVector::ZeroVector, FRotator::ZeroRotator);
+			if (GE)
+			{
+				GE->LookAtActor(LookAtActor);
+				CoreGameEventsCache.Add(GE);
+			}
+		}
+	}
+}
+
+void ACoreGameEvent::LookAtActor(FLookAtActors & LookAtActor)
+{
+	LAA = LookAtActor;
+	if (LAA.LookAtActorSeq.IsValidIndex(0))
+	{
+		FTimerHandle Timer;
+		GetWorld()->GetTimerManager().SetTimer(Timer, this, &ACoreGameEvent::LookAtActorSequence,
+												LAA.DelayBeforeLookingSequenceSec, false);
+	}
+}
+
+void ACoreGameEvent::LookAtActorSequence()
+{
+	ACoreGameplay* CoreGameplay = UCoreFunctionLibrary::GetCoreGameplay(this);
+	if (!CoreGameplay)
+		return;
+	UCoreFunctionLibrary::CloseWidgets();
+
+}
+

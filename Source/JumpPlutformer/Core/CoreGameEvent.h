@@ -35,6 +35,7 @@ private:
 	UFUNCTION()
 	void DestroyCreatedEvents();
 
+				/*  Environment Events   */
 
 	// Actor Interactions Events
 	int InteractionRepeatCounter = 0;
@@ -69,6 +70,15 @@ private:
 	void ActorAvailability(FActorsAvailability& ActorAvailability);
 	UFUNCTION()
 	void ActorAvailabilityAfterDelay();
+
+				/*  Player Events   */
+
+	// Look At Actors Events
+	FLookAtActors LAA;
+	void LookAtActors(FGameEvent& GameEvent);
+	void LookAtActor(FLookAtActors& LookAtActor);
+	UFUNCTION()
+	void LookAtActorSequence();
 
 protected:
 
