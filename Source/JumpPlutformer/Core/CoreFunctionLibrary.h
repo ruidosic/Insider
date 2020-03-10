@@ -6,7 +6,7 @@
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "CoreFunctionLibrary.generated.h"
 
-
+class UCoreGameplay;
 class UTimelineComponent;
 
 UCLASS()
@@ -18,4 +18,11 @@ public:
 	
 	UFUNCTION()
 	static void SetPlayRate(UTimelineComponent* Timeline, float Sec);
+
+	UFUNCTION(meta = (WorldContext = "WorldContextObject"))
+	static ACoreGameplay* GetCoreGameplay(UObject* WorldContext);
+
+	//	Need logic!!!
+	UFUNCTION()
+	static void CloseWidgets();
 };

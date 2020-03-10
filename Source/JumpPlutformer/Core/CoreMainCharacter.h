@@ -7,8 +7,11 @@
 #include "Core/CharacterMovementInterface.h"
 #include "CoreMainCharacter.generated.h"
 
+
 class ACorePlayerController;
 class UInputComponent;
+class UChildActorComponent;
+class UCameraComponent;
 
 UCLASS()
 class INSIDER_API ACoreMainCharacter : public ACharacter, public ICharacterMovementInterface
@@ -24,9 +27,15 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	
+	UPROPERTY()
 	ACorePlayerController* PC;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	UChildActorComponent* CoreGameplay;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	UCameraComponent* PlayerCamera;
 
 
 	virtual void RotationAfterTeleport_Implementation(AActor* CurrentPortal, AActor* TargetPortal) override;
@@ -35,4 +44,19 @@ public:
 
 	virtual void Tick(float DeltaTime) override;
 
+private:
+
+	// Input Axes 
+
+	UFUNCTION()
+	void MoveForward(float Value);
+
+	UFUNCTION()
+	void MoveRight(float Value);
+
+	UFUNCTION()
+	void LookUp(float Value);
+
+	UFUNCTION()
+	void Turn(float Value);
 };
