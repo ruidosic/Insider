@@ -9,6 +9,7 @@
 class UCoreGameplay;
 class UTimelineComponent;
 
+
 UCLASS()
 class INSIDER_API UCoreFunctionLibrary : public UBlueprintFunctionLibrary
 {
@@ -25,4 +26,8 @@ public:
 	//	Need logic!!!
 	UFUNCTION()
 	static void CloseWidgets();
+
+
+
+
 };

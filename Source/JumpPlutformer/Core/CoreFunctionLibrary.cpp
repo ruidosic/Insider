@@ -8,6 +8,7 @@
 #include "Kismet/KismetArrayLibrary.h"
 #include "GameFramework/Pawn.h"
 
+
 void UCoreFunctionLibrary::SetPlayRate(UTimelineComponent* Timeline, float Sec)
 {
 	if (!Timeline)
@@ -47,6 +48,7 @@ ACoreGameplay * UCoreFunctionLibrary::GetCoreGameplay(UObject* WorldContext)
 	}
 	return nullptr;
 }
+
 
 void UCoreFunctionLibrary::CloseWidgets()
 {
