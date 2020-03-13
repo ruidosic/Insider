@@ -15,3 +15,10 @@ https://wiki.unrealengine.com/Timeline_in_c%2B%2B
 
 Перечисления С++
 https://gist.github.com/trentpolack/ad361a4d3d6e46d1a1ff82c03a997f28
+
+Уменьшение сборки
+http://zompi.pl/reducing-build-size-of-android-game-in-unreal-engine-4/
+https://docs.unrealengine.com/en-US/Platforms/Mobile/Android/ReducingAPKSize/index.html
+
+Создание бандлов
+https://forums.unrealengine.com/development-discussion/android-development/1725363-tutorial-how-to-create-android-app-bundle-at-unreal-engine

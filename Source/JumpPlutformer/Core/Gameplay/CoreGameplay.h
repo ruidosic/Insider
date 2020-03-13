@@ -25,7 +25,7 @@ protected:
 	virtual void BeginPlay() override;
 
 	// Main Configuration Model
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, SimpleDisplay)
 	FGameplaySettings GameplaySettings;
 
 public:
