@@ -31,6 +31,6 @@ struct FPointlightSettings
 	bool bCastShadow = true;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Pointlight Settings")
-	UTextureLightProfile* IESTexture;
+	TSoftObjectPtr<UTextureLightProfile> IESTexture;
 	
 };
