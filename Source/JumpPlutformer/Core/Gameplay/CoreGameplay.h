@@ -57,6 +57,11 @@ public:
 	// Equipment Settings from GameplaySettings model
 	//
 
+	/* For equipments with lights, we need setup Light Settings (Pointlight or Spotlight when we equip this equipment) */
+	/*	For equipment's sounds we need setup their sounds when we equip this equipments */
+	/*	Small Asset we loading synchronous, Large Asset we load Asynchronous;
+		for sync load we can use native LoadSync function, but we need function for LoadAsync in CoreFunctionLibrary */
+
 	// Glowstick
 	bool bHasGlowstick;
 	bool bInfiniteGlowstick;
@@ -162,15 +167,24 @@ public:
 
 private:
 
+	// Setups Player And Equipments
+
 	void SetupPlayerSettings();
 	void SetupEquipmentSettings();
 	void SetupGlowstickSettings();
+	void SetupSoftGlowstickSettings();
 	void SetupFlashlightSettings();
+	void SetupSoftFlashlightSettings();
 	void SetupLighterSettings();
+	void SetupSoftLighterSettings();
 	void SetupTorchSettings();
+	void SetupSoftTorchSettings();
 	void SetupNightVisionSettings();
+	void SetupSoftNightVisionSettings();
 	void SetupCameroidSettings();
+	void SetupSoftCameroidSettings();
 	void SetupPistolSettings();
+	void SetupSoftPistolSettings();
 
 public:
 	void StartFocus();
@@ -184,6 +198,20 @@ public:
 	bool bNightVisionOff = true;
 
 private:
+	
+	// Root Components
+	UPROPERTY(EditDefaultsOnly)
+	USceneComponent* RootComp;
+
+	UPROPERTY(EditDefaultsOnly)
+	USceneComponent* LightsComp;
+	
+	UPROPERTY(EditDefaultsOnly)
+	USceneComponent* NightVisionComp;
+	
+	UPROPERTY(EditDefaultsOnly)
+	USceneComponent* PistolComp;
+
 
 	//
 	// Timeline properties

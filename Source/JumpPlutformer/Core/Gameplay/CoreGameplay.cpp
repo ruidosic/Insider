@@ -60,7 +60,15 @@ void ACoreGameplay::SetupGlowstickSettings()
 	GlowstickIntensity = GameplaySettings.EquipmentSettings.Glowstick.LightSettings.Intensity;
 }
 
+void ACoreGameplay::SetupSoftGlowstickSettings()
+{
+}
+
 void ACoreGameplay::SetupFlashlightSettings()
+{
+}
+
+void ACoreGameplay::SetupSoftFlashlightSettings()
 {
 }
 
@@ -68,7 +76,15 @@ void ACoreGameplay::SetupLighterSettings()
 {
 }
 
+void ACoreGameplay::SetupSoftLighterSettings()
+{
+}
+
 void ACoreGameplay::SetupTorchSettings()
+{
+}
+
+void ACoreGameplay::SetupSoftTorchSettings()
 {
 }
 
@@ -76,11 +92,23 @@ void ACoreGameplay::SetupNightVisionSettings()
 {
 }
 
+void ACoreGameplay::SetupSoftNightVisionSettings()
+{
+}
+
 void ACoreGameplay::SetupCameroidSettings()
 {
 }
 
+void ACoreGameplay::SetupSoftCameroidSettings()
+{
+}
+
 void ACoreGameplay::SetupPistolSettings()
+{
+}
+
+void ACoreGameplay::SetupSoftPistolSettings()
 {
 }
 
