@@ -5,6 +5,7 @@
 #include "Core/CoreFunctionLibrary.h"
 #include "Components/TimelineComponent.h"
 #include "Core/CoreUse.h"
+#include "Core/Gameplay/CoreGameplay.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Core/Pickups/Interfaces/CorePhysicsObjectInterface.h"
 #include "Kismet/GameplayStatics.h"
@@ -467,6 +468,6 @@ void ACoreGameEvent::LookAtActorSequence()
 	if (!CoreGameplay)
 		return;
 	UCoreFunctionLibrary::CloseWidgets();
-
+	
 }
 

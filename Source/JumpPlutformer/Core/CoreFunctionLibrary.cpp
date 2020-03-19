@@ -3,11 +3,13 @@
 
 #include "CoreFunctionLibrary.h"
 #include "Components/TimelineComponent.h"
+#include "Components/PointLightComponent.h"
+#include "Components/SpotLightComponent.h"
 #include "Core/Gameplay/CoreGameplay.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetArrayLibrary.h"
 #include "GameFramework/Pawn.h"
-#include "InsiderLoadingScreen.h"
+
 
 void UCoreFunctionLibrary::SetPlayRate(UTimelineComponent* Timeline, float Sec)
 {
@@ -50,17 +52,36 @@ ACoreGameplay * UCoreFunctionLibrary::GetCoreGameplay(UObject* WorldContext)
 }
 
 
-void UCoreFunctionLibrary::PlayLoadingScreen(bool bPlayUntilStopped, float PlayTime)
+void UCoreFunctionLibrary::SetPointlight(UPointLightComponent * Pointlight, FPointlightSettings PointlightSettings)
 {
-	IInsiderLoadingScreenModule& LoadingScreenModule = IInsiderLoadingScreenModule::Get();
-	LoadingScreenModule.StartInGameLoadingScreen(bPlayUntilStopped, PlayTime);
+	Pointlight->SetIntensity(PointlightSettings.Intensity);
+	Pointlight->SetLightColor(PointlightSettings.LightColor);
+	Pointlight->SetAttenuationRadius(PointlightSettings.AttenuationRadius);
+	Pointlight->SetSourceRadius(PointlightSettings.SourceRadius);
+	Pointlight->SetSourceLength(PointlightSettings.SourceLength);
+	Pointlight->SetCastShadows(PointlightSettings.bCastShadow);
+	if (PointlightSettings.IESTexture.IsValid())
+	{
+		Pointlight->SetIESTexture(PointlightSettings.IESTexture.LoadSynchronous());
+	}
 }
 
-void UCoreFunctionLibrary::StopLoadingScreen()
+void UCoreFunctionLibrary::SetSpotlight(USpotLightComponent * Spotlight, FSpotlightSettings SpotlightSettings)
 {
-	IInsiderLoadingScreenModule& LoadingScreenModule = IInsiderLoadingScreenModule::Get();
-	LoadingScreenModule.StopInGameLoadingScreen();
+	Spotlight->SetIntensity(SpotlightSettings.Intensity);
+	Spotlight->SetLightColor(SpotlightSettings.LightColor);
+	Spotlight->SetInnerConeAngle(SpotlightSettings.InnerConeAngle);
+	Spotlight->SetOuterConeAngle(SpotlightSettings.OuterConeAngle);
+	Spotlight->SetAttenuationRadius(SpotlightSettings.AttenuationRadius);
+	Spotlight->SetSourceRadius(SpotlightSettings.SourceRadius);
+	Spotlight->SetSourceLength(SpotlightSettings.SourceLength);
+	Spotlight->SetCastShadows(SpotlightSettings.bCastShadow);
+	if (SpotlightSettings.IESTexture.IsValid())
+	{
+		Spotlight->SetIESTexture(SpotlightSettings.IESTexture.LoadSynchronous());
+	}
 }
+
 
 void UCoreFunctionLibrary::CloseWidgets()
 {
