@@ -10,7 +10,15 @@ public class Insider : ModuleRules
 	
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
 
-		PrivateDependencyModuleNames.AddRange(new string[] {  });
+		PrivateDependencyModuleNames.AddRange(
+            new string[] {
+                "InsiderLoadingScreen",
+                "Slate",
+                "SlateCore",
+                "InputCore",
+                "MoviePlayer",
+            }
+        );
 
 		// Uncomment if you are using Slate UI
 		// PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });

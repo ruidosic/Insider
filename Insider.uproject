@@ -7,11 +7,14 @@
 		{
 			"Name": "Insider",
 			"Type": "Runtime",
-			"LoadingPhase": "Default",
-			"AdditionalDependencies": [
-				"Engine"
-			]
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "InsiderLoadingScreen",
+			"Type": "ClientOnly",
+			"LoadingPhase": "PreLoadingScreen"
 		}
+
 	],
 	"Plugins": [
 		{

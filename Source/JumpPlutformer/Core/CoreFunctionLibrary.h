@@ -22,6 +22,12 @@ public:
 	UFUNCTION(meta = (WorldContext = "WorldContextObject"))
 	static ACoreGameplay* GetCoreGameplay(UObject* WorldContext);
 
+	UFUNCTION(BlueprintCallable, Category = Loading)
+	static void PlayLoadingScreen(bool bPlayUntilStopped, float PlayTime);
+
+	UFUNCTION(BlueprintCallable, Category = Loading)
+	static void StopLoadingScreen();
+
 	//	Need logic!!!
 	UFUNCTION()
 	static void CloseWidgets();

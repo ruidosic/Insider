@@ -7,6 +7,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetArrayLibrary.h"
 #include "GameFramework/Pawn.h"
+#include "InsiderLoadingScreen.h"
 
 void UCoreFunctionLibrary::SetPlayRate(UTimelineComponent* Timeline, float Sec)
 {
@@ -46,6 +47,19 @@ ACoreGameplay * UCoreFunctionLibrary::GetCoreGameplay(UObject* WorldContext)
 		}
 	}
 	return nullptr;
+}
+
+
+void UCoreFunctionLibrary::PlayLoadingScreen(bool bPlayUntilStopped, float PlayTime)
+{
+	IInsiderLoadingScreenModule& LoadingScreenModule = IInsiderLoadingScreenModule::Get();
+	LoadingScreenModule.StartInGameLoadingScreen(bPlayUntilStopped, PlayTime);
+}
+
+void UCoreFunctionLibrary::StopLoadingScreen()
+{
+	IInsiderLoadingScreenModule& LoadingScreenModule = IInsiderLoadingScreenModule::Get();
+	LoadingScreenModule.StopInGameLoadingScreen();
 }
 
 void UCoreFunctionLibrary::CloseWidgets()
