@@ -4,6 +4,7 @@
 
 #include "Math/Color.h"
 #include "Engine/TextureLightProfile.h"
+#include "UObject/SoftObjectPtr.h"
 #include "SpotlightSettings.generated.h"
 
 

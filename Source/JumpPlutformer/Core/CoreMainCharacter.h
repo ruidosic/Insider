@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "Core/CharacterMovementInterface.h"
+#include "Core/MainCharacterInterface.h"
 #include "CoreMainCharacter.generated.h"
 
 
@@ -14,7 +14,7 @@ class UChildActorComponent;
 class UCameraComponent;
 
 UCLASS()
-class INSIDER_API ACoreMainCharacter : public ACharacter, public ICharacterMovementInterface
+class INSIDER_API ACoreMainCharacter : public ACharacter, public IMainCharacterInterface
 {
 	GENERATED_BODY()
 

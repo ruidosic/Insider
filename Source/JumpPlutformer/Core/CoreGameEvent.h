@@ -61,6 +61,8 @@ private:
 	void SpawnActors(FGameEvent& GameEvent);
 	void SpawnActor(FSpawnActors& SpawnActor);
 	UFUNCTION()
+	void AsyncSpawnActorCompleted(bool bResult, FStringAssetReference LoadedReference, AActor* SpawnedActor);
+	UFUNCTION()
 	void SpawnActorAfterDelay();
 
 

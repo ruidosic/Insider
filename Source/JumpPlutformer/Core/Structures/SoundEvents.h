@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "UObject/AssetPtr.h"
+#include "UObject/SoftObjectPtr.h"
 #include "Sound/SoundBase.h"
 #include "Sound/SoundAttenuation.h"
 #include "SoundEvents.generated.h"
@@ -18,7 +18,7 @@ struct FSound2D
 	GENERATED_BODY()
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "2D Sound")
-	TAssetPtr<USoundBase> Sound2D;
+	TSoftObjectPtr<USoundBase> Sound2D;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "2D Sound")
 	float DelayBeforePlaySec = 0.01;
@@ -31,7 +31,7 @@ struct FSound3D
 	GENERATED_BODY()
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "3D Sound")
-	TAssetPtr<USoundBase> Sound3D;
+	TSoftObjectPtr<USoundBase> Sound3D;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "3D Sound")
 	AActor* ActorToAttach;
@@ -44,7 +44,7 @@ struct FSound3D
 	FName ActorTag;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "3D Sound")
-	TAssetPtr<USoundAttenuation> SoundAttenuation;
+	TSoftObjectPtr<USoundAttenuation> SoundAttenuation;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "3D Sound")
 	float DelayBeforePlaySec = 0.01;
@@ -57,7 +57,7 @@ struct FSoundAmbient
 	GENERATED_BODY()
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Ambient Sound")
-	TAssetPtr<USoundBase> AmbientSound;
+	TSoftObjectPtr<USoundBase> AmbientSound;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AmbientSound")
 	TArray<FName> AmbientSoundTags;

@@ -36,13 +36,13 @@ struct FOptionalDamageSound
 	GENERATED_BODY()
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Optional Damage Sound")
-		TAssetPtr<USoundBase> CustomDamageVoice;
+	TSoftObjectPtr<USoundBase> CustomDamageVoice;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Optional Damage Sound")
-		TAssetPtr<USoundBase> CustomDieVoice;
+	TSoftObjectPtr<USoundBase> CustomDieVoice;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Optional Damage Sound")
-		TAssetPtr<USoundBase> CustomDieSFX;
+	TSoftObjectPtr<USoundBase> CustomDieSFX;
 };
 
 
@@ -110,7 +110,7 @@ struct FFearEffect
 	bool bFearSound;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fear Effect")
-	TAssetPtr<USoundBase> CustomFearSound;
+	TSoftObjectPtr<USoundBase> CustomFearSound;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fear Effect")
 	float DelayBeforeFear = 0.01;

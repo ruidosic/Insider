@@ -19,7 +19,7 @@ struct FGameplaySettings
 	FPlayerSettings PlayerSettings;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay Settings")
-	FFootstepSoundSettings FootstepSoundSettings;
+	FFootstepSoundSettings PlayerFootstepSoundSettings;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay Settings")
 	FEquipmentSettings EquipmentSettings;

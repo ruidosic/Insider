@@ -39,7 +39,7 @@ public:
 		LoadingScreenBrush = MakeShareable(new FInsiderLoadingScreenBrush(LoadingScreenName, FVector2D(1024, 256)));
 	
 		FSlateBrush* BGBrush = new FSlateBrush();
-		BGBrush->TintColor = FLinearColor(0.034f, 0.034f, 0.034f, 1.0f);
+		BGBrush->TintColor = FLinearColor(0.015f, 0.015f, 0.015f, 1.0f);
 
 		ChildSlot
 		[
@@ -92,6 +92,7 @@ private:
 class FInsiderLoadingScreenModule : public IInsiderLoadingScreenModule
 {
 public:
+	// Show loading screen before Game module was loaded
 	virtual void StartupModule() override
 	{
 		// Force load for cooker reference

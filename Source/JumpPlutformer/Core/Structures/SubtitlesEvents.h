@@ -2,8 +2,8 @@
 
 #pragma once
 
+#include "UObject/SoftObjectPtr.h"
 #include "Sound/SoundBase.h"
-#include "UObject/AssetPtr.h"
 #include "Sound/SoundAttenuation.h"
 #include "SubtitlesEvents.generated.h"
 
@@ -24,7 +24,7 @@ struct FSubtitleAttach
 	FName ActorTag;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subtitle Sub")
-	TAssetPtr<USoundAttenuation> SoundAttenuation;
+	TSoftObjectPtr<USoundAttenuation> SoundAttenuation;
 };
 
 
@@ -37,7 +37,7 @@ struct FSubtitle
 	FText SubtitleText;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subtitle")
-	TAssetPtr<USoundBase> SubtitleSound;
+	TSoftObjectPtr<USoundBase> SubtitleSound;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subtitle")
 	bool bSound3D;

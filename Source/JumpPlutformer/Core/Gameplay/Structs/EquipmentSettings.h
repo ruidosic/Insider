@@ -325,6 +325,9 @@ struct FEquipmentSettings
 	FFlashlightSettings Flashlight;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Equipments Settings")
+	FLighterSettings Lighter;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Equipments Settings")
 	FTorchSettings Torch;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Equipments Settings")

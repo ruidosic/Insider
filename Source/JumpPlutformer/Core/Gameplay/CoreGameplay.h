@@ -5,16 +5,19 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Core/Gameplay/Structs/GameplaySettings.h"
+#include "Core/Gameplay/GameplayInterface.h"
 #include "CoreGameplay.generated.h"
 
-
+class ULightEquipsComponent;
+class UNightVisionEquipsComponent;
+class UCameroidEquipsComponent;
+class UWeaponEquipsComponent;
 class UTimelineComponent;
-class UCurveFloat;
-class USoundBase;
-
+class UPostProcessComponent;
+class USpringArmComponent;
 
 UCLASS()
-class INSIDER_API ACoreGameplay : public AActor
+class INSIDER_API ACoreGameplay : public AActor, public IGameplayInterface
 {
 	GENERATED_BODY()
 	
@@ -30,7 +33,19 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, SimpleDisplay)
 	FGameplaySettings GameplaySettings;
 
+	bool bEquipTimelineInProgress;
+	
 public:
+
+	/* overriden from IGameplayInterface */
+
+	FGameplaySettings GetGameplaySettings_Implementation() override;
+	bool IsOnLadder_Implementation() override;
+	bool IsHelding_Implementation() override;
+	bool IsEquipTimelineInProgress_Implementation() override;
+	void SetEquipTimelineInProgress_Implementation(bool bValue) override;
+	void SetEquipmentSwitch_Implementation(int Value) override;
+	
 	//
 	// Player Settings Properties from GameplaySettings model
 	//
@@ -45,146 +60,30 @@ public:
 	float DOFApertureInspecting;
 	bool bFilterInventory;
 	TSoftObjectPtr<USoundBase> SoftDamageSound;
+	UPROPERTY()
 	USoundBase* DamageSound;
 	TSoftObjectPtr<USoundBase> SoftDeathSound;
+	UPROPERTY()
 	USoundBase* DeathSound;
 	TSoftObjectPtr<USoundBase> SoftFearSound;
+	UPROPERTY()
 	USoundBase* FearSound;
 	TSoftObjectPtr<USoundBase> SoftYouDiedSFX;
+	UPROPERTY()
 	USoundBase* YouDiedSFX;
 
 	//
 	// Equipment Settings from GameplaySettings model
+	// Was setting and using into LightEquipsComponent,  
 	//
-
-	/* For equipments with lights, we need setup Light Settings (Pointlight or Spotlight when we equip this equipment) */
-	/*	For equipment's sounds we need setup their sounds when we equip this equipments */
-	/*	Small Asset we loading synchronous, Large Asset we load Asynchronous;
-		for sync load we can use native LoadSync function, but we need function for LoadAsync in CoreFunctionLibrary */
-
-	// Glowstick
-	bool bHasGlowstick;
-	bool bInfiniteGlowstick;
-	float GlowstickDurationMinute;
-	float GlowstickEmissiveIntensity;
-	float GlowstickIntensity;
-	TSoftObjectPtr<USoundBase> SoftGlowstickOnSound;
-	USoundBase* GlowstickOnSound;
-	TSoftObjectPtr<USoundBase> SoftGlowstickOffSound;
-	USoundBase* GlowstickOffSound;
 	
-	// Flashlight
-	bool bHasFlashlight;
-	bool bInfiniteFlashlight;
-	float FlashlightDurationMinute;
-	float FlashlightFlickerStartPercent;
-	float FlashlightFlickeringSpeed;
-	float FlashlightFocusAngle;
-	float FlashlightIntensity;
-	float FlashlightAngle;
-	TSoftObjectPtr<USoundBase> SoftFlashlightOnSound;
-	USoundBase* FlashlightOnSound;
-	TSoftObjectPtr<USoundBase> SoftFlashlightOffSound;
-	USoundBase* FlashlightOffSound;
-	TSoftObjectPtr<USoundBase> SoftFlashlightFocusSound;
-	USoundBase* FlashlightFocusSound;
-
-	// Lighter
-	bool bHasLighter;
-	bool bInfiniteLighter;
-	float LighterDurationMinute;
-	float LighterFlickeringSpeed;
-	float LighterIntensity;
-	TSoftObjectPtr<USoundBase> SoftLighterOnSound;
-	USoundBase* LighterOnSound;
-	TSoftObjectPtr<USoundBase> SoftLighterOffSound;
-	USoundBase* LighterOffSound;
-
-	// Torch
-	bool bHasTorch;
-	bool bInfiniteTorch;
-	bool bTorchRequiresLighter;
-	float TorchDurationMinute;
-	float TorchFlickeringSpeed;
-	float TorchIntensity;
-	TSoftObjectPtr<USoundBase> SoftTorchOnSound;
-	USoundBase* TorchOnSound;
-	TSoftObjectPtr<USoundBase> SoftTorchOffSound;
-	USoundBase* TorchOffSound;
-	TSoftObjectPtr<USoundBase> SoftTorchFireSparksSound;
-	USoundBase* TorchFireSparksSound;
-
-	// NightVision
-	bool bHasNightVision;
-	bool bInfiniteNightVision;
-	float NightVisionDurationMinute;
-	float NightVisionLowBatteryWarningPercent;
-	float NightVisionMaxZoomFOV;
-	TSoftObjectPtr<USoundBase> SoftNightVisionOnSound;
-	USoundBase* NightVisionOnSound;
-	TSoftObjectPtr<USoundBase> SoftNightVisionOffSound;
-	USoundBase* NightVisionOffSound;
-	TSoftObjectPtr<USoundBase> SoftNightVisionZoomOutSound;
-	USoundBase* NightVisionZoomOutSound;
-	TSoftObjectPtr<USoundBase> SoftNightVisionZoomInSound;
-	USoundBase* NightVisionZoomInSound;
-	TSoftObjectPtr<USoundBase> SoftNightVisionLowBatterySound;
-	USoundBase* NightVisionLowBatterySound;
-
-	// Cameroid
-	bool bHasCameroid;
-	bool bInfiniteCameroid;
-	float CameroidPhotoShakeDifficulty; // from 0 to 6
-	float CameroidFOV;
-	TSoftObjectPtr<UTexture> SoftCameroidViewFinderTexture;
-	UTexture* CameroidViewFinderTexture;
-	TSoftObjectPtr<USoundBase> SoftCameroidOnSound;
-	USoundBase* CameroidOnSound;
-	TSoftObjectPtr<USoundBase> SoftCameroidOffSound;
-	USoundBase* CameroidOffSound;
-	TSoftObjectPtr<USoundBase> SoftCameroidShotSound;
-	USoundBase* CameroidShotSound;
-
-	// Pistol
-	bool bHasPistol;
-	bool bPistolContinuousShot;
-	int TotalAmmo;
-	int PistolClipCapasity;
-	int PistolClipAmmo;
-	float PistolShotDistance;
-	TSoftObjectPtr<UMaterialInterface> SoftPistolShotDecal;
-	UMaterialInterface* PistolShotDecal;
-	TSoftObjectPtr<USoundBase> SoftSoftPistolEquipSound;
-	USoundBase* PistolEquipSound;
-	TSoftObjectPtr<USoundBase> SoftPistolShotSound;
-	USoundBase* PistolShotSound;
-	TSoftObjectPtr<USoundBase> SoftPistolShotWhileEmptySound;
-	USoundBase* PistolShotWhileEmptySound;
-	TSoftObjectPtr<USoundBase> SoftPistolReloadSound;
-	USoundBase* PistolReloadSound;
-	TSoftObjectPtr<USoundBase> SoftPistolReloadWhileEmptySound;
-	USoundBase* PistolReloadWhileEmptySound;
 
 private:
 
-	// Setups Player And Equipments
-
 	void SetupPlayerSettings();
-	void SetupEquipmentSettings();
-	void SetupGlowstickSettings();
-	void SetupSoftGlowstickSettings();
-	void SetupFlashlightSettings();
-	void SetupSoftFlashlightSettings();
-	void SetupLighterSettings();
-	void SetupSoftLighterSettings();
-	void SetupTorchSettings();
-	void SetupSoftTorchSettings();
-	void SetupNightVisionSettings();
-	void SetupSoftNightVisionSettings();
-	void SetupCameroidSettings();
-	void SetupSoftCameroidSettings();
-	void SetupPistolSettings();
-	void SetupSoftPistolSettings();
+
+	/* Setup Equipments, Timelines and others components (create components and attach them to component's hierarchy)*/
+	void SetupComponents();
 
 public:
 	void StartFocus();
@@ -194,28 +93,68 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "Physics")
 	bool bHelding = false;
 
+	bool bOnLadder;
+
+	int EquipmentSwitch;
+
 	UPROPERTY(BlueprintReadOnly, Category = "Night Vision")
 	bool bNightVisionOff = true;
 
-private:
+protected:
 	
-	// Root Components
-	UPROPERTY(EditDefaultsOnly)
+	// Root Components for Equipments Objects attach
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	USceneComponent* RootComp;
 
-	UPROPERTY(EditDefaultsOnly)
-	USceneComponent* LightsComp;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	USceneComponent* LightsRootComp;
 	
-	UPROPERTY(EditDefaultsOnly)
-	USceneComponent* NightVisionComp;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UPostProcessComponent* NightVisionRootComp;
 	
-	UPROPERTY(EditDefaultsOnly)
-	USceneComponent* PistolComp;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	USceneComponent* WeaponRootComp;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UPostProcessComponent* CameroidRootComp;
 
-	//
-	// Timeline properties
-	//
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	USceneComponent* HeldSlotComp;
+
+	// Arm Components for Lights and Weapons Equipments
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	USpringArmComponent* FlashlightArm;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	USpringArmComponent* LighterArm;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	USpringArmComponent* GlowstickArm;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	USpringArmComponent* TorchArm;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	USpringArmComponent* PistolArm;
+
+	/* Contain all logic for Glowstick, Flashlight, Torch, Lighter*/
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Components)
+	ULightEquipsComponent* LightEquipsComponent;
+
+	/* Contain logic for equip, unequip, etc.*/
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Components)
+	UNightVisionEquipsComponent* NightVisionEquipsComponent;
+
+	/* Contain all logic for Pistol and other weapon (like equip, unequip and other)*/
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Components)
+	UWeaponEquipsComponent* WeaponEquipsComponent;
+
+	/* Contain logic for equip, unequip, etc.*/
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Components)
+	UCameroidEquipsComponent* CameroidEquipsComponent;
+
 	UPROPERTY()
 	UTimelineComponent* FocusTimeline;
 	

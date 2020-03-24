@@ -13,6 +13,7 @@ public class Insider : ModuleRules
 		PrivateDependencyModuleNames.AddRange(
             new string[] {
                 "InsiderLoadingScreen",
+                "UMG",
                 "Slate",
                 "SlateCore",
                 "InputCore",

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "Math/Color.h"
+#include "UObject/SoftObjectPtr.h"
 #include "Engine/TextureLightProfile.h"
 #include "PointlightSettings.generated.h"
 

@@ -320,33 +320,40 @@ void ACoreGameEvent::SpawnActorAfterDelay()
 {
 	FActorSpawnParameters SpawnParam;
 	SpawnParam.SpawnCollisionHandlingOverride = SA.CollisionHandling;
-	AActor* SpawnedActor = GetWorld()->SpawnActor<AActor>(SA.SpawnedActorClass, SA.SpawnTransform, SpawnParam);
 	
-	// Add Tag to SpawnedActor
-	if (SpawnedActor && SA.SpawnedActorTags.IsValidIndex(0))
-	{
-		SpawnedActor->Tags = SA.SpawnedActorTags;
-	}
-
-	// Attach Spawned Actor to another actor
-	if (SA.OptionalAttachTo.AttachTo)
-	{
-		TArray<UActorComponent*> ActorComponents;
-		ActorComponents = SA.OptionalAttachTo.AttachTo->GetComponentsByTag(UPrimitiveComponent::StaticClass(), SA.OptionalAttachTo.ParentComponentByTag);
-		if (ActorComponents.IsValidIndex(0) && ActorComponents[0])
-		{
-			UPrimitiveComponent* CompToAttach;
-			CompToAttach = Cast<UPrimitiveComponent>(ActorComponents[0]);
-			if (CompToAttach)
-			{
-				SpawnedActor->AttachToComponent(CompToAttach,
-					FAttachmentTransformRules(SA.OptionalAttachTo.LocationRule, SA.OptionalAttachTo.RotationRule, SA.OptionalAttachTo.ScaleRule, true),
-					SA.OptionalAttachTo.SocketName);
-			}
-		}
-	}
+	// Spawn Actor Async
+	FMyAsyncSpawnActorDelegate OnAsyncSpawnActorCompleted;
+	OnAsyncSpawnActorCompleted.BindDynamic(this, &ACoreGameEvent::AsyncSpawnActorCompleted);
+	UCoreFunctionLibrary::AsyncSpawnActor(this, SA.SpawnedActorClass, SA.SpawnTransform, OnAsyncSpawnActorCompleted);
+	//
+	//// Add Tag to SpawnedActor
+	//if (SpawnedActor && SA.SpawnedActorTags.IsValidIndex(0))
+	//{
+	//	SpawnedActor->Tags = SA.SpawnedActorTags;
+	//}
+	//// Attach Spawned Actor to another actor
+	//if (SA.OptionalAttachTo.AttachTo)
+	//{
+	//	TArray<UActorComponent*> ActorComponents;
+	//	ActorComponents = SA.OptionalAttachTo.AttachTo->GetComponentsByTag(UPrimitiveComponent::StaticClass(), SA.OptionalAttachTo.ParentComponentByTag);
+	//	if (ActorComponents.IsValidIndex(0) && ActorComponents[0])
+	//	{
+	//		UPrimitiveComponent* CompToAttach;
+	//		CompToAttach = Cast<UPrimitiveComponent>(ActorComponents[0]);
+	//		if (CompToAttach)
+	//		{
+	//			SpawnedActor->AttachToComponent(CompToAttach,
+	//				FAttachmentTransformRules(SA.OptionalAttachTo.LocationRule, SA.OptionalAttachTo.RotationRule, SA.OptionalAttachTo.ScaleRule, true),
+	//				SA.OptionalAttachTo.SocketName);
+	//		}
+	//	}
+	//}
 }
 
+void ACoreGameEvent::AsyncSpawnActorCompleted(bool bResult, FStringAssetReference LoadedReference, AActor * SpawnedActor)
+{
+	UE_LOG(LogTemp, Warning, TEXT("Actor Spawned Async"));
+}
 
  // Availability Actors
 void ACoreGameEvent::ActorAvailabilities(FGameEvent & GameEvent)

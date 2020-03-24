@@ -100,7 +100,7 @@ struct FSpawnActors
 	GENERATED_BODY()
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawn Actors")
-	TSubclassOf<AActor> SpawnedActorClass;
+	TAssetSubclassOf<AActor> SpawnedActorClass;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawn Actors")
 	FTransform SpawnTransform;
